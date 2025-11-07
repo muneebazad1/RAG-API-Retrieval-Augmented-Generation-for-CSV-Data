@@ -13,8 +13,8 @@ def initialize_components():
     embeddings = HuggingFaceEmbeddings(model_name="Qwen/Qwen3-Embedding-0.6B")
     model = init_chat_model("google_genai:gemini-2.5-flash-lite")
     cloud_client = chromadb.CloudClient(
-        api_key="ck-AG66yDL8KK4uwvsq8wtXNjz1MUr4VueutwZisyAq4ThT",
-        tenant="9682eaae-d806-426c-b9bd-2f0682eec51a",
+        api_key="",             #user your own API and tenant keys which can be acquired through ChromaDB
+        tenant="",
     )
     vector_store = Chroma(
         client=cloud_client,
@@ -67,3 +67,4 @@ def create_query_agent(model, vector_store):
     prompt = "You are an assistant that answers questions about household data."
     agent = create_agent(model, tools, system_prompt=prompt)
     return agent
+
