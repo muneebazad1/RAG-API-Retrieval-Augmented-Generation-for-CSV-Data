@@ -1,30 +1,72 @@
-RAG-based CSV Data Analysis Helper APIs is a lightweight and modular backend service that brings Retrieval-Augmented Generation (RAG) capabilities to your local CSV datasets.
+Project Title:
+RAG-based CSV Data Analysis Helper APIs
 
-Built with FastAPI, LangChain, and Chroma Cloud, it allows users to:
+Description:
+RAG-based CSV Data Analysis Helper APIs is a lightweight backend service designed to bring Retrieval-Augmented Generation (RAG) capabilities to CSV datasets.
+It allows users to upload CSV files, automatically embed and index their content using HuggingFace embeddings, and ask natural language questions to extract insights.
+The system uses FastAPI for serving endpoints, LangChain for building the RAG logic, Chroma Cloud for storing vector embeddings, and Google Gemini models for generating intelligent answers.
 
-Upload CSV files,
+The API helps bridge structured CSV data with conversational AI, allowing users to query data semantically instead of using SQL or manual filtering.
+It retrieves relevant chunks of information from the embedded dataset, then uses the language model to generate accurate and grounded responses.
+This project is ideal for developers, analysts, and researchers looking to build intelligent data interfaces or prototype RAG-based tools.
 
-Automatically embed and index their content using HuggingFace embeddings, and
+Core Features:
 
-Ask natural language questions to extract insights — powered by Google Gemini models.
+Upload any CSV file and automatically embed it in Chroma Cloud.
 
-The system bridges structured CSV data and conversational AI, enabling semantic querying without needing SQL or manual filtering. It uses semantic retrieval to find relevant chunks of data, then passes them to a large language model for accurate, grounded, and explainable answers.
+Query data using natural language instead of database queries.
 
-Whether you’re building a data analysis assistant, automating reporting, or prototyping RAG applications, this project provides a clean foundation to start from.
+Powered by FastAPI for fast and simple API creation.
 
-⚙️ Core Features
+Integrates LangChain for RAG pipeline management.
 
-📂 Upload any CSV file and auto-index it in Chroma Cloud
+Uses HuggingFace embeddings and Google Gemini for context-aware reasoning.
 
-🧠 Ask natural language questions about CSV contents
+Automatically switches active datasets after uploads.
 
-🚀 Powered by FastAPI for high-performance APIs
+Setup and Installation:
+Step 1: Clone the repository
+bash
+git clone https://github.com/muneebazad1/RAG-based-CSV-Data-Analysis-Helper-APIs.git
 
-🧩 Uses LangChain to connect vector retrieval and LLM reasoning
 
-☁️ Persistent Chroma Cloud vector storage for reusability
+Step 2: Install dependencies
+bash
+pip install -r requirements.txt
 
-🔄 Automatically switches active dataset after upload
+Step 3: Run the API
+bash
+uvicorn main2:app --reload
 
-🛠️ Setup & Installation
-1. Clone the repository
+The server will start at http://127.0.0.1:8000
+
+
+How to Use:
+
+Upload your CSV file using the /upload_csv endpoint from Swagger UI (/docs).
+
+file: choose your CSV file
+
+collection_name: provide a name for your dataset
+The system will create and index a new Chroma Cloud collection.
+
+Ask questions using the /ask endpoint with a JSON body.
+Example request:
+bash
+{
+"query": "What is the total number of entries for category A?"
+}
+
+The API will retrieve relevant data from the vector store and generate a meaningful answer.
+
+Environment Configuration:
+You must set your API keys in config.py or in an environment file as follows:
+bash
+LANGSMITH_API_KEY=your_langsmith_key
+GOOGLE_API_KEY=your_google_gemini_key
+CHROMA_CLOUD_API_KEY=your_chroma_key
+
+Summary:
+This project demonstrates how to combine semantic retrieval and generative AI to interact with CSV data.
+It provides a practical example of how Retrieval-Augmented Generation can be used for data analysis, exploration, and intelligent query systems.
+RAG-based CSV Data Analysis Helper APIs offers a flexible foundation for building data-aware assistants, analytics tools, or AI-driven backend services.
